@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&family=Estonia&family=Quicksand:wght@400;500&family=Varela+Round&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 300;
+    font-size: 0.925rem;
+}
+
+body {
+    background-image: linear-gradient(to right, #aba6a3ef, #232323);
+    text-align: center;
+}
+
+.top-heading {
+    color: crimson;
+    padding-top: 150px;
+    padding-bottom: 20px;
+    letter-spacing: 2.5px;
+    color: rgb(219, 217, 213);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+
+.container {
+    background-color: rgb(112, 111, 110);
+    width: 30%;
+    height: 200px;
+    margin: auto;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 1px 2px 5px 2px black;
+}
+
+#mini-container {
+    display: none;
+}
+
+.starter {
+    padding-bottom: 12px;
+    font-size: 1rem;
+}
+
+.starter p {
+    padding-bottom: 15px;
+    padding-top: 35px;
+    font-size: large;
+}
+
+.buttons {
+    margin: 0 12px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 5px;
+    background-color: rgb(241, 237, 231);
+    box-shadow: 0 1px 4px black;
+    color: black;
+}
+
+.buttons:hover {
+    background: rgb(12, 12, 12);
+    box-shadow: 0 1px 3px rgb(228, 153, 153);
+    border: 1px solid rgb(233, 228, 226);
+    color:white;
+}
+
+#choose_dropdown {
+    padding: 0.05rem 0;
+}
+
+#choose_dropdown p {
+    padding: 5px 0 15px;
+    letter-spacing: 0.5px;
+    font-size: 0.925rem;
+}
+
+#courses_drop_down {
+    padding: 2px;
+    border: solid 1px blue;
+    border-radius: 5px;
+}
+
+.dropdown-submit-btn {
+    width: 3.75rem;
+    font-size: 0.92rem;
+    padding: 2px 1px;
+}
+
+#main-table {
+    display: none;
+    margin-top: 60px;
+}
+
+#main-table p {
+    padding: 5px 0;
+}
+
+#inner_table {
+    width: 100%;
+    margin: auto;
+}
+
+th {
+    width: 8%;
+    background-color: rgb(78, 77, 77);
+    padding: 20px 0 0 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: black;
+    text-align: center;
+}
+
+td {
+    width: 8%;
+    background-color: rgb(78, 77, 77);
+    padding: 10px 0px;
+}
+
+input, .grad {
+    width: 80%;
+    background-color: rgb(78, 77, 77);
+    padding: 5px 5px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 7px;
+    color: rgb(253, 253, 253);
+}
+
+.calc-btn {
+    width: 35%;
+    margin: 20px 0;
+}
+
+.result-display {
+    display: none;
+    text-align: center;
+    padding: 10px 2px;
+    border: 1.5px solid black;
+    width: 40%;
+    margin: 10px auto;
+    border-radius: 7.5px;
+    box-shadow: 1px 2px 3px black;
+    background-color: rgb(252, 255, 92);
+    color: darkred;
+    display: hidden;
+    transition: all 0.3s;
+}
+
+.result-display:hover {
+    transform: scale(1.04);
+}
+
+#show_result {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1.4px;
+}
+
+#final-val {
+    color: blue;
+    font-weight: bolder;
+}

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA</title>
+    <!-- <link rel="stylesheet" href="cgpa.css"> -->
+    <link rel="shortcut icon" href="favicon/grade.png" type="image/x-icon">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&family=Estonia&family=Quicksand:wght@400;500&family=Varela+Round&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 300;
+    font-size: 0.925rem;
+}
+
+body {
+    background-image: linear-gradient(to right, #aba6a3ef, #232323);
+    text-align: center;
+}
+
+.top-heading {
+    color: crimson;
+    padding-top: 150px;
+    padding-bottom: 20px;
+    letter-spacing: 2.5px;
+    color: rgb(219, 217, 213);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+
+.container {
+    background-color: rgb(112, 111, 110);
+    width: 30%;
+    height: 200px;
+    margin: auto;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 1px 2px 5px 2px black;
+}
+
+#mini-container {
+    display: none;
+}
+
+.starter {
+    padding-bottom: 12px;
+    font-size: 1rem;
+}
+
+.starter p {
+    padding-bottom: 15px;
+    padding-top: 35px;
+    font-size: large;
+}
+
+.buttons {
+    margin: 0 12px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 5px;
+    background-color: rgb(241, 237, 231);
+    box-shadow: 0 1px 4px black;
+    color: black;
+}
+
+.buttons:hover {
+    background: rgb(12, 12, 12);
+    box-shadow: 0 1px 3px rgb(228, 153, 153);
+    border: 1px solid rgb(233, 228, 226);
+    color:white;
+}
+
+#choose_dropdown {
+    padding: 0.05rem 0;
+}
+
+#choose_dropdown p {
+    padding: 5px 0 15px;
+    letter-spacing: 0.5px;
+    font-size: 0.925rem;
+}
+
+#courses_drop_down {
+    padding: 2px;
+    border: solid 1px blue;
+    border-radius: 5px;
+}
+
+.dropdown-submit-btn {
+    width: 3.75rem;
+    font-size: 0.92rem;
+    padding: 2px 1px;
+}
+
+#main-table {
+    display: none;
+    margin-top: 60px;
+}
+
+#main-table p {
+    padding: 5px 0;
+}
+
+#inner_table {
+    width: 100%;
+    margin: auto;
+}
+
+th {
+    width: 8%;
+    background-color: rgb(78, 77, 77);
+    padding: 20px 0 0 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: black;
+    text-align: center;
+}
+
+td {
+    width: 8%;
+    background-color: rgb(78, 77, 77);
+    padding: 10px 0px;
+}
+
+input, .grad {
+    width: 80%;
+    background-color: rgb(78, 77, 77);
+    padding: 5px 5px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 7px;
+    color: rgb(253, 253, 253);
+}
+
+.calc-btn {
+    width: 35%;
+    margin: 20px 0;
+}
+
+.result-display {
+    display: none;
+    text-align: center;
+    padding: 10px 2px;
+    border: 1.5px solid black;
+    width: 40%;
+    margin: 10px auto;
+    border-radius: 7.5px;
+    box-shadow: 1px 2px 3px black;
+    background-color: rgb(252, 255, 92);
+    color: darkred;
+    display: hidden;
+    transition: all 0.3s;
+}
+
+.result-display:hover {
+    transform: scale(1.04);
+}
+
+#show_result {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1.4px;
+}
+
+#final-val {
+    color: blue;
+    font-weight: bolder;
+}
+</style>
+
+<body>
+
+    <main>
+
+        <h2 class="top-heading">CGPA Calculator</h2>
+
+        <div class="container">
+
+            <div class="starter">
+                <p> What do you want to calculate ?</p>
+                
+                <div>
+                    <button type="button" class="buttons gpa-cgpa-btn" id="gpa_cal">GPA</button>
+                    <button type="button" class="buttons gpa-cgpa-btn" id="cgpa_cal">CGPA</button>
+                </div>
+                
+            </div>
+
+            <div id="mini-container">
+
+                <div id="choose_dropdown">
+
+                </div>
+
+                <div class="main_table" id="main-table">                    
+                    <div id="inner_table">
+                        <table>
+                            <thead>
+                                <tr id="table_heading">
+                                    
+                                </tr>
+                            </thead>
+                            <tbody id="use_js">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <p id="submit_button"></p>
+
+                <div class="result-display" id="result-show-div">
+                    <p id="show_result">
+
+                    </p>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </main>
+       
+    <!-- <script src="cgpa.js"></script> -->
+    <script>
+        var nrows = 0;
+
+document.getElementById("gpa_cal").onclick = function() {
+
+    document.getElementById("mini-container").style.display = "block";
+    document.getElementById("main-table").style.display = "none";
+    document.getElementById("result-show-div").style.display = "none";
+    document.getElementById("submit_button").style.display = "none";
+
+    var tableElement = document.getElementById("use_js");
+    tableElement.innerHTML = "";
+    document.getElementById("show_result").innerHTML = "";
+    document.getElementById("table_heading").innerHTML = "";
+
+    document.getElementById("choose_dropdown").innerHTML = "<p>Enter number of courses: <select id='courses_drop_down'> <option value='2'>2</option> <option value='3'>3</option> <option value='4'>4</option> <option value='5'>5</option> <option value='6'>6</option> <option value='7'>7</option> <option value='8'>8</option> <option value='9'>9</option> <option value='10'>10</option> <option value='11'>11</option> <option value='12'>12</option> </select> <input id='submit' class='buttons dropdown-submit-btn' type='submit'> </p>"
+
+    document.getElementById("submit").onclick = function() {
+
+        document.getElementById("main-table").style.display = "block";
+        document.getElementById("submit_button").style.display = "inline";
+        document.getElementById("result-show-div").style.display = "none";
+
+        document.getElementById("show_result").innerHTML = "";
+        document.getElementById("table_heading").innerHTML = "<th>Course</th> <th>Credits</th> <th>Grade Points</th>";
+        var selectField = document.getElementById("courses_drop_down");
+        var selected = selectField.options.selectedIndex;
+        var selectedValue = selectField.options[selected];
+
+        var a = parseInt(selectedValue.innerHTML);
+        nrows = a;
+        tableElement.innerHTML = "";
+        for (var i=0; i<a; i++) {
+            tableElement.innerHTML += "<td> <input type='text' placeholder='Course " + (i+1) + "'> </td> <td> <input class='cred' onKeyDown='if(this.value.length==1 && event.keyCode!=8) return false;' required type='number'> </td> <td> <select class='grad'> <option value=''> ---Select Grade--- </option> <option value='10'>S</option> <option value='9'>A</option> <option value='8'>B</option> <option value='7'>C</option> <option value='6'>D</option> <option value='5'>E</option> <option value='0'> N/F </option> </select> </td>";
+        }
+
+        document.getElementById("submit_button").innerHTML = "<input type='submit' class='buttons calc-btn' value='Calculate'>";
+    }
+
+    document.getElementById("submit_button").onclick = function() {
+
+        var gradePoints = 0;
+        var creditsTotal = 0;
+        
+        var creditArray = document.getElementsByClassName("cred");
+        var gradeArray = document.getElementsByClassName("grad");
+
+        for (var i=0; i<nrows; i++) {
+            creditsTotal += parseInt(creditArray[i].value);
+            gradePoints += parseInt(gradeArray[i].value)*parseInt(creditArray[i].value);
+        }
+
+        var res = gradePoints/creditsTotal;
+        document.getElementById("result-show-div").style.display = "block";
+        document.getElementById("show_result").innerHTML = "Your GPA comes out to be: <span id='final-val'>" + res.toFixed(2) + "</span>";
+    }
+}
+
+document.getElementById("cgpa_cal").onclick = function() {
+
+    document.getElementById("mini-container").style.display = "block";
+    document.getElementById("main-table").style.display = "none";
+    document.getElementById("result-show-div").style.display = "none";
+    document.getElementById("submit_button").style.display = "none";
+
+    var tableElement = document.getElementById("use_js");
+    tableElement.innerHTML = "";
+    document.getElementById("show_result").innerHTML = "";
+    document.getElementById("table_heading").innerHTML = "";
+
+    document.getElementById("choose_dropdown").innerHTML = "<p>Enter number of semesters: <select id='courses_drop_down'> <option value='2'>2</option> <option value='3'>3</option> <option value='4'>4</option> <option value='5'>5</option> <option value='6'>6</option> <option value='7'>7</option> <option value='8'>8</option> </select> <input id='submit' class='buttons dropdown-submit-btn' type='submit'> </p>";
+
+    document.getElementById("submit").onclick = function() {
+
+        document.getElementById("main-table").style.display = "block";
+        document.getElementById("submit_button").style.display = "inline";
+        document.getElementById("result-show-div").style.display = "none";
+
+        document.getElementById("show_result").innerHTML = "";
+
+        document.getElementById("table_heading").innerHTML = "<th>Semester</th> <th>Credits</th> <th>GPA</th>";
+        var selectField = document.getElementById("courses_drop_down");
+        var selected = selectField.options.selectedIndex;
+        var selectedValue = selectField.options[selected];
+
+        var a = parseInt(selectedValue.innerHTML);
+        nrows = a;
+        tableElement.innerHTML = "";
+        for (var i=0; i<a; i++) {
+            tableElement.innerHTML += "<td> <input type='text' placeholder='Semester " + (i+1) + "'> </td><td> <input class='cred' required type='number' onKeyDown='if(this.value.length==2 && event.keyCode!=8) return false;'> </td><td> <input type='number' max='10' required class='grad'> </td>";
+        }
+
+        document.getElementById("submit_button").innerHTML = "<input type='submit'; class='buttons calc-btn'  value='Calculate'>";
+    }
+
+    document.getElementById("submit_button").onclick = function() { 
+        var gradePoints = 0;
+        var creditsTotal = 0;
+        
+        var creditArray = document.getElementsByClassName("cred");
+        var gradeArray = document.getElementsByClassName("grad");
+
+        for (var i=0; i<nrows; i++) {
+            creditsTotal += parseInt(creditArray[i].value);
+            gradePoints += parseFloat(gradeArray[i].value)*parseInt(creditArray[i].value);
+        }
+
+        var res = gradePoints/creditsTotal;
+        document.getElementById("result-show-div").style.display = "block";
+        document.getElementById("show_result").innerHTML = "Your CGPA comes out to be: <span id='final-val'>" + res.toFixed(2) + "</span>";
+    }
+}
+    </script>
+</body>
+</html>
